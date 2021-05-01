@@ -34,7 +34,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: chiapos
-        path: ./dist
+        path: ./build-win
 
     - name: cmake, RunTests, and valgrind on ${{ matrix.os }}
       if: startsWith(matrix.os, 'ubuntu')
