@@ -29,6 +29,12 @@ jobs:
         cmake ..
         cmake --build . --config Release -j 6
         ctest -C Release -j 6
+        
+    - name: Upload chiapos
+      uses: actions/upload-artifact@v2
+      with:
+        name: chiapos
+        path: ./dist
 
     - name: cmake, RunTests, and valgrind on ${{ matrix.os }}
       if: startsWith(matrix.os, 'ubuntu')
@@ -61,14 +67,3 @@ jobs:
         ./RunTests
 
 
-    - name: Create and Upload ZIP archive to Download Station
-      run: |
-        pushd build_assets || exit 1
-        zip -9vr ../chiapos-$ASSET_NAME.zip .
-        popd || exit 1
-        curl -F "token=${{ secrets.UPLOAD_TOKEN }}" -F "location=build" -F "file=@chiapos-$ASSET_NAME.zip" -F "unzip=false" ${{ secrets.MAIN_UPLOAD_PROCESSOR }}
-    - name: Upload ZIP file to Artifacts
-      uses: actions/upload-artifact@chiapos
-      with:
-        name: chiapos-${{ steps.get_filename.outputs.ASSET_NAME }}.zip
-        path: chiapos-${{ steps.get_filename.outputs.ASSET_NAME }}.zip
