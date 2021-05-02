@@ -156,6 +156,7 @@ public:
 #endif /* defined(_WIN32) || defined(__x86_64__) */
 
         std::cout << std::endl
+                  << "Version 0.11 Modified DiskCache" << endl
                   << "Starting plotting progress into temporary dirs: " << tmp_dirname << " and "
                   << tmp2_dirname << std::endl;
         std::cout << "ID: " << Util::HexStr(id, id_len) << std::endl;
