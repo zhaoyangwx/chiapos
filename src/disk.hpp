@@ -18,6 +18,7 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
+#include <io.h>
 #include <string>
 #include <vector>
 #include <thread>
@@ -201,7 +202,7 @@ struct FileDisk {
             }
             amtwritten =
                 ::fwrite(reinterpret_cast<const char *>(memcache), sizeof(uint8_t), length, f_);
-            _commit(::_fileno(f_));
+            _commit(_fileno(f_));
             writePos = begin + amtwritten;
             if (writePos > writeMax)
                 writeMax = writePos;
