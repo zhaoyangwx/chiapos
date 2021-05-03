@@ -103,7 +103,8 @@ int main(int argc, char *argv[]) try {
         "p, progress", "Display progress percentage during plotting",
         cxxopts::value<bool>(show_progress))(
         "help", "Print help");
-
+    // force nobitfield
+    nobitfield = true;
     auto result = options.parse(argc, argv);
 
     if (result.count("help") || argc < 2) {
