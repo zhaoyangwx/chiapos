@@ -163,7 +163,7 @@ Phase3Results RunPhase3(
     for (int table_index = 1; table_index < 7; table_index++) {
         Timer table_timer;
         Timer computation_pass_1_timer;
-        std::cout << "Compressing tables " << table_index << " and " << (table_index + 1)
+        std::cout << "Phase 3 Compressing tables " << table_index << " and " << (table_index + 1)
                   << std::endl;
 
         // The park size must be constant, for simplicity, but must be big enough to store EPP
