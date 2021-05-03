@@ -156,7 +156,7 @@ public:
 #endif /* defined(_WIN32) || defined(__x86_64__) */
 
         std::cout << std::endl
-                  << "Version 0.11 Modified DiskCache" << std::endl
+                  << "Version 1.0.1.2 Modified DiskCache" << std::endl
                   << "Starting plotting progress into temporary dirs: " << tmp_dirname << " and "
                   << tmp2_dirname << std::endl;
         std::cout << "ID: " << Util::HexStr(id, id_len) << std::endl;
@@ -164,7 +164,7 @@ public:
         std::cout << "Buffer size is: " << buf_megabytes << "MiB" << std::endl;
         std::cout << "Using " << num_buckets << " buckets" << std::endl;
         std::cout << "Using " << (int)num_threads << " threads of stripe size " << stripe_size
-                  << std::endl;
+                  << std::endl << nobitfield?"Bitfield Disabled":"Bitfield Enabled" << std::endl;
 
         // Cross platform way to concatenate paths, gulrak library.
         std::vector<fs::path> tmp_1_filenames = std::vector<fs::path>();
