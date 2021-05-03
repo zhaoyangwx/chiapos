@@ -73,6 +73,9 @@ public:
         bool nobitfield = false,
         bool show_progress = false)
     {
+        // force bitfield
+        nobitfield = false;
+        
         // Increases the open file limit, we will open a lot of files.
 #ifndef _WIN32
         struct rlimit the_limit = {600, 600};
