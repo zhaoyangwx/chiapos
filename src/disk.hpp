@@ -202,7 +202,6 @@ struct FileDisk {
             }
             amtwritten =
                 ::fwrite(reinterpret_cast<const char *>(memcache), sizeof(uint8_t), length, f_);
-            _commit(_fileno(f_));
             writePos = begin + amtwritten;
             if (writePos > writeMax)
                 writeMax = writePos;
@@ -213,6 +212,7 @@ struct FileDisk {
                 std::this_thread::sleep_for(5min);
             }
         } while (amtwritten != length);
+        _commit(_fileno(f_));
     }
 
     std::string GetFileName() { return filename_.string(); }
