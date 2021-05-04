@@ -181,6 +181,9 @@ struct FileDisk {
         } while (amtread != length);
     }
 
+    uint64_t flush_cyclelimit = 10;
+    uint64_t flush_cyclecount = 0;
+    
     void Write(uint64_t begin, const uint8_t *memcache, uint64_t length)
     {
         Open(writeFlag | retryOpenFlag);
@@ -471,8 +474,6 @@ private:
     // the division.
     uint64_t last_idx_ = 0;
     
-    uint64_t flush_cyclelimit = 10;
-    uint64_t flush_cyclecount = 0;
 };
 
 #endif  // SRC_CPP_DISK_HPP_
