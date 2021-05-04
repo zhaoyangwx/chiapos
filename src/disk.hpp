@@ -212,7 +212,13 @@ struct FileDisk {
                 std::this_thread::sleep_for(5min);
             }
         } while (amtwritten != length);
-        _commit(_fileno(f_));
+        
+        // Flush Windows Cache after few cycles
+        flush_cyclecount += 1;
+        if (flush_clcyecount >= flush_cyclelimit){
+            flush_cyclecount = 0;
+            _commit(_fileno(f_));
+        }
     }
 
     std::string GetFileName() { return filename_.string(); }
@@ -464,6 +470,9 @@ private:
     // could be computed as last_physical_ / entry_size_, but we want to avoid
     // the division.
     uint64_t last_idx_ = 0;
+    
+    uint64_t flush_cyclelimit = 10;
+    uint64_t flush_cyclecount = 0;
 };
 
 #endif  // SRC_CPP_DISK_HPP_
