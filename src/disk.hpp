@@ -217,7 +217,7 @@ struct FileDisk {
         
         // Flush Windows Cache after few cycles
         flush_cyclecount += 1;
-        if (flush_clcyecount >= flush_cyclelimit){
+        if (flush_cyclecount >= flush_cyclelimit){
             flush_cyclecount = 0;
             _commit(_fileno(f_));
         }
