@@ -181,8 +181,7 @@ struct FileDisk {
         } while (amtread != length);
     }
 
-    uint64_t flush_cyclelimit = 10;
-    uint64_t flush_cyclecount = 0;
+
     
     void Write(uint64_t begin, const uint8_t *memcache, uint64_t length)
     {
@@ -239,6 +238,9 @@ private:
     uint64_t readPos = 0;
     uint64_t writePos = 0;
     uint64_t writeMax = 0;
+    
+    uint64_t flush_cyclelimit = 10;
+    uint64_t flush_cyclecount = 0;
     bool bReading = true;
 
     fs::path filename_;
