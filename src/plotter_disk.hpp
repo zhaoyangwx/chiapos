@@ -190,7 +190,7 @@ public:
         }
         for (size_t i = 1; i <= 7; i++) {
             if (!fs::exists(tmp_dirname + "/t" + std::to_string(i))){
-                fs::create_directory(tmp_dirname + "/t" + std::to_string(i));
+                fs::create_directory(fs::path(tmp_dirname) / fs::path("/t" + std::to_string(i)));
             }
         }
 
