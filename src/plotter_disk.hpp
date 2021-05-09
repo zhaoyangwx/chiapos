@@ -177,7 +177,6 @@ public:
         tmp_1_filenames.push_back(fs::path(tmp_dirname) / fs::path(filename + ".sort.tmp"));
         for (size_t i = 1; i <= 7; i++) {
             tmp_1_filenames.push_back(
-                if (!fs::exists(tmp_dirname)) {}
                 fs::path(tmp_dirname) / fs::path("/t" + std::to_string(i)) / fs::path(filename + ".table" + std::to_string(i) + ".tmp"));
         }
         fs::path tmp_2_filename = fs::path(tmp2_dirname) / fs::path(filename + ".2.tmp");
@@ -190,7 +189,7 @@ public:
         }
         for (size_t i = 1; i <= 7; i++) {
             if (!fs::exists(tmp_dirname + "/t" + std::to_string(i))){
-                fs::create_directories(tmp_dirname + "/t" + std::to_string(i));
+                fs::create_directory(tmp_dirname + "/t" + std::to_string(i));
             }
         }
 
