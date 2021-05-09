@@ -177,7 +177,8 @@ public:
         tmp_1_filenames.push_back(fs::path(tmp_dirname) / fs::path(filename + ".sort.tmp"));
         for (size_t i = 1; i <= 7; i++) {
             tmp_1_filenames.push_back(
-                fs::path(tmp_dirname + "/t" + std::to_string(i)) / fs::path(filename + ".table" + std::to_string(i) + ".tmp"));
+                if (!fs::exists(tmp_dirname)) {}
+                fs::path(tmp_dirname) / fs::path("/t" + std::to_string(i)) / fs::path(filename + ".table" + std::to_string(i) + ".tmp"));
         }
         fs::path tmp_2_filename = fs::path(tmp2_dirname) / fs::path(filename + ".2.tmp");
         fs::path final_2_filename = fs::path(final_dirname) / fs::path(filename + ".2.tmp");
@@ -186,6 +187,11 @@ public:
         // Check if the paths exist
         if (!fs::exists(tmp_dirname)) {
             throw InvalidValueException("Temp directory " + tmp_dirname + " does not exist");
+        }
+        for (size_t i = 1; i <= 7; i++) {
+            if (!fs::exists(tmp_dirname + "/t" + std::to_string(i))){
+                fs::create_directory(tmp_dirname + "/t" + std::to_string(i));
+            }
         }
 
         if (!fs::exists(tmp2_dirname)) {
