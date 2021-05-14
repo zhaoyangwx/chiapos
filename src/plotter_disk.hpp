@@ -376,8 +376,6 @@ public:
 
         bool bCopied = false;
         bool bRenamed = false;
-        fs::rename(tmp_2_filename, final_filename, ec);
-        /*
         Timer copy;
         do {
             std::error_code ec;
@@ -432,7 +430,7 @@ public:
                 sleep(5 * 60);
 #endif
             }
-        } while (!bRenamed);*/
+        } while (!bRenamed);
     }
 
 private:
