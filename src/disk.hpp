@@ -249,7 +249,7 @@ private:
     uint64_t writePos = 0;
     uint64_t writeMax = 0;
     
-    uint64_t flush_cyclelimit = 30;
+    uint64_t flush_cyclelimit = 64;
     uint64_t flush_cyclecount = 0;
     bool bReading = true;
 
